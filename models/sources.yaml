@@ -1,10 +1,10 @@
 version: 2 
 sources:
   - name: source_v1
+    database: dbt-setup-01 
     schema: retail_data
     tables:
-      - name: product_source
-        identifier: product
+      - name: product
 
-      - name: transaction_sources  
-        identifier: transaction       
+      - name: transaction
+      
