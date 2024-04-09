@@ -4,7 +4,7 @@ models:
   - name: product_src_table
     description: Cleansed table which contain airbnb listings
     columns:
-      - name: product_id
+      - name: currency_code
         description: Primary Key for the listings 
         tests:
           - unique
