@@ -1,3 +1,3 @@
 {{ config(materialized='table') }}
 
-select cust_id,card_id,account_id from {{source1('retail_data', 'transaction_source')}}
+select cust_id,card_id,account_id from {{source('source_v1', 'transaction_source')}}
