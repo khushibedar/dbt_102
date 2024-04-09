@@ -1,0 +1,116 @@
+name: dbt-workflow01
+version: v1
+type: workflow
+tags:
+  - workflow
+description: DBT Sample Workflow
+workspace: public
+workflow:
+  dag:
+    - name: dbt-workflow-job-v2
+      title: dbt Sample Test Jobs for workflow
+      spec:
+#        configs:
+#          profiles.yml: /Users/rakesh/dataos/dataos-dbt/etc/dataos/config/profiles.yml
+        stack: dbt+python:1.0
+        compute: runnable-default
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 250Mi
+          limits:
+            cpu: 1000m
+            memory: 250Mi
+        logLevel: DEBUG # WARNING, ERROR, DEBUG
+        stackSpec:
+          profiles:
+            dbt_sample:
+              target: dev
+              outputs:
+                dev:
+                  type: bigquery
+                  method: service-account-json
+                  project: dbt-setup-01
+                  dataset: retail_data
+                  threads: 4
+                  keyfile_json:
+                    type: service_account
+                    project_id: dbt-setup-01
+                    private_key_id: 94269e82660301b7109d5067eedc6bc2fe77bc07
+                    private_key: |
+                      -----BEGIN PRIVATE KEY-----
+                      MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCxzQ9vB3foMHIs
+                      hGFvhVqdjNmsLgQJY6d7EYMV2IJAZ0L2BIdfxcYB18FMth82Y9OkemADDBlGOKQD
+                      CJ9HAKBSGwqJrNvEdmTzjrsx60psA9PWhO3PMOuhlT+knyeU3UGeczgliJ3o2wpX
+                      7XjU0oSwCBod3nYUWbgA4Xr8EvgkjoLq3qVL4MR6l5gsWU0ECsH/kkchn7NVEw8e
+                      9vLN93rrY71VJ+vMPhEXz/yzvWKX5ncl9L9P6KB1EDSoz0DTu2gUOPakeFiPGAVi
+                      GddB0Un37HhAIHv30HNAXadePNyhp7jjleTmBwrhw6nYDEb4IGJy2qUxB0IOSaN7
+                      rk95pqqnAgMBAAECggEAOB+hgouZ9unr8E9tLjWq79Z5E1eHIKubP0a82RV5r/io
+                      c13kmX+lTAmd06gdXB7QvLeAPRYBmF/ira54EIKLGL++aMzupio1HYhtYImD+WqP
+                      4MQfCOrJRj0FVOKELQJWZzy5eWeRaOJTdoPYQ12cUrCMBeel4DCd23FRT+Zw+6CU
+                      6BpzW8KTUorA9XcNaxMRuP5tD6ZaiTHYSg4C63SIzmMbwA9pcYvU+TB3WABUOzDq
+                      2W0VoXOjLkV/UG/gpd+fJTbdQV9Su+/up6xYVMG+kNMgYjwstUg0SqI6HU2wka2k
+                      cDAS8A+fCglXinpxDOA6Bow6EYfmGXKMYB1MlKSp2QKBgQDvz42LB/NtBQl2O10l
+                      dTjs+QoYHTpHpjfpTdQyEwvZlN77RslFic+daTKxSItoyaKxgTUp3JmgSRq4kuYR
+                      +SoFoVyWB9lppBY3xyqtJscsxuKqBdTNe1lJib069tFTeFXUvYWXTnriLuFwFvtD
+                      8PU99wbwR7iPvEm4le+L1YLt2wKBgQC9zdhqqaACfdVFEi/PE1yFOAeh3i1ie09O
+                      HGV0OP2SFKXfIpadb8tku6Cd6qLejLmuByeRzjlMswkBTWwiJddaJap8/zeQcdLV
+                      PtPj3UNRvaVePhmmhgHz9W9yVl6uCLvuMwBjLBOml9PQZXSDFGsr7H9dLRj+dXuh
+                      wOJiDaH+JQKBgCyfn4QGd7qKnGcexsdol64o7ULtdWHNwUutitXCi4ryU8fINT22
+                      VibBY4hvqllWY+rJ0z216fRUhh9gXmVryvD/RL46Oa+Zs/SvH/bWZ2uimpzuttmB
+                      oWy4r7igIvV4R+htV8V++gjKlnKIJDtRRCFCrUza27ILZGBvrgKEOXfPAoGAcfCW
+                      UEGPqq87TgGC7b5jth1Sh5tGh24ax3tIdCKaJg17HZ436D7qTIhN/T6TkyHLfWsS
+                      F/dCcoavizadCUrKInWmCO90vaN2u0jCDnIPLYy5Lv/8ifi8R2U5B9xNbhAUMQQw
+                      4VfeXA2cu+eLr/yb8XxBYP/nlymTlCCkRdSFQHkCgYBi1Y+VFWLnsMlsd/muGKVo
+                      7LK5h74rzN5L/QGPs7jra+HlXZCKZEuTzv4nZFAbf3KP+E74dM/HQ9m/b8hoPiFZ
+                      XxydNVyAKFYa9jMXLZOfM/SXVPNB52GLIV0VezyMtVyHKBbUEUyKPEsPmeVWU66A
+                      29Dud6nBY791JgHcLy2bzg==
+                      -----END PRIVATE KEY-----
+
+                    client_email: dbt-user@dbt-setup-01.iam.gserviceaccount.com
+                    client_id: '106702278742883047226'
+                    auth_uri: https://accounts.google.com/o/oauth2/auth
+                    token_uri: https://oauth2.googleapis.com/token
+                    auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
+                    client_x509_cert_url: >-
+                      https://www.googleapis.com/robot/v1/metadata/x509/dbt-user%40dbt-setup-01.iam.gserviceaccount.com
+                    universe_domain: googleapis.com
+
+          dbt_project:
+            name: 'dbt_sample'
+            version: '1.0.0'
+            config-version: 2
+            model-paths: ["models"]
+            # analysis-paths: ["analyses"]
+            # test-paths: ["tests"]
+            # seed-paths: ["seeds"]
+            # macro-paths: ["macros"]
+            # snapshot-paths: ["snapshots"]
+            profile: 'dbt_sample'
+            target-path: "target"  # directory which will store compiled SQL files
+            clean-targets:         # directories to be removed by `dbt clean`
+              - "target"
+              - "dbt_packages"
+            models:
+              retail_product_sample:
+                +materialized: view
+              dim:
+                +materialized: table
+          dbt_packages:
+            packages:
+              - git: "https://github.com/khushibedar/dbt_102.git"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
