@@ -1,7 +1,7 @@
 version: 2 
 sources:
   - name: source1
-    database: dbt-setup-01
+    database: dbt-setup-01s
     schema: retail_data
     tables:
       - name: product
