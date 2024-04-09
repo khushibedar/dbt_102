@@ -5,6 +5,7 @@ sources:
     schema: retail_data
     tables:
       - name: product
+        identifier: scr_product        
 
       - name: transaction
       
