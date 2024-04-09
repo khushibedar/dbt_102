@@ -4,8 +4,8 @@ sources:
     database: dbt-setup-01
     schema: retail_data
     tables:
-      - name: product
-        identifier: product_source
+      - name: product_source
+        identifier: product
 
-      - name: transaction  
-        identifier: transaction_sources       
+      - name: transaction_sources  
+        identifier: transaction       
