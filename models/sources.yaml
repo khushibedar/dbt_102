@@ -7,5 +7,5 @@ sources:
       - name: product
         identifier: product_source
 
-      - name: transaction 
+      - name: transaction  
         identifier: transaction_sources       
