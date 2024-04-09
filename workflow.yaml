@@ -96,6 +96,8 @@ workflow:
                 +materialized: view
               dim:
                 +materialized: table
+                src:
+                  +materialized: ephemeral                
           dbt_packages:
             packages:
               - git: "https://github.com/khushibedar/dbt_102.git"
